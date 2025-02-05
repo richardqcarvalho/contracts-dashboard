@@ -3,20 +3,26 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "dev": "concurrently -k -n server,dashboard \"tsx watch server/index.ts\" \"wait-on http-get://localhost:4000/contracts && vite\"",
+    "build": "tsc -b && vite build"
   },
   "dependencies": {
+    "@fastify/cors": "^10.0.2",
+    "csv-parse": "^5.6.0",
+    "fastify": "^5.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@types/node": "^22.13.1",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
     "prettier": "^3.4.2",
+    "tsx": "^4.19.2",
     "typescript": "~5.7.3",
-    "vite": "^6.0.11"
+    "vite": "^6.0.11",
+    "wait-on": "^8.0.2"
   }
 }
