@@ -1,12 +1,7 @@
 import clsx from 'clsx/lite'
 import { twMerge } from 'tailwind-merge'
 
-export const Button = (
-  props: React.DetailedHTMLProps<
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  >,
-) => {
+export const Button = (props: React.ComponentProps<'button'>) => {
   const { className, ...rest } = props
 
   return (
