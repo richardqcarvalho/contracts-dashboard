@@ -1,7 +1,25 @@
+import { getContracts } from '@actions'
+import { useQuery } from '@tanstack/react-query'
+import { ContractT } from '@type/contract'
+
 export const Dashboard = () => {
+  const { data, isLoading } = useQuery<ContractT[]>({
+    queryKey: ['get-contracts'],
+    queryFn: getContracts,
+    initialData: [],
+  })
+
   return (
-    <div className='flex h-screen w-screen items-center justify-center bg-blue-900 text-white'>
-      <span>Dashboard</span>
+    <div className='flex h-screen w-screen flex-col items-center justify-center bg-blue-900 text-white'>
+      {isLoading ? (
+        <span>Loading...</span>
+      ) : (
+        <>
+          {data?.map(contract => (
+            <span key={contract.id}>{contract.name}</span>
+          ))}
+        </>
+      )}
     </div>
   )
 }
