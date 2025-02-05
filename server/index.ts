@@ -13,14 +13,14 @@ const [_header, ...rows]: Array<string[]> = parse(csv.toString(), {
 
 const dataObject: Array<ContractT> = rows.map(row => {
   return {
-    identifier: row[0],
-    contractName: row[1],
+    id: row[0],
+    name: row[1],
     client: row[2],
     startDate: parseDate(row[3]),
     expirationDate: parseDate(row[4]),
     status: row[5],
-    contractValue: parseValue(row[6]),
-    contractType: row[7],
+    value: parseValue(row[6]),
+    type: row[7],
   }
 })
 

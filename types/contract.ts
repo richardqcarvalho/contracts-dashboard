@@ -1,10 +1,10 @@
 export type ContractT = {
-  identifier: string
-  contractName: string
+  id: string
+  name: string
   client: string
   startDate: Date
   expirationDate: Date
   status: string
-  contractValue: number
-  contractType: string
+  value: number
+  type: string
 }
