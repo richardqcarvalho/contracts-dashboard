@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently -k -n server,dashboard \"tsx watch server/index.ts\" \"wait-on http-get://localhost:4000/contracts && vite\"",
+    "dev": "concurrently -k -n server,dashboard \"tsx watch server/index.ts\" \"wait-on http-get://localhost:4000/contracts && vite --host\"",
     "build": "tsc -b && vite build"
   },
   "dependencies": {
