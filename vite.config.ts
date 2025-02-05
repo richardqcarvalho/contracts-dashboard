@@ -10,6 +10,7 @@ export default defineConfig({
     alias: {
       '@page': path.resolve(__dirname, './src/pages'),
       '@component': path.resolve(__dirname, './src/components'),
+      '@store': path.resolve(__dirname, './src/store'),
       '@router': path.resolve(__dirname, './src/routes'),
       '@action': path.resolve(__dirname, './src/actions'),
       '@style': path.resolve(__dirname, './src/styles/index.css'),
