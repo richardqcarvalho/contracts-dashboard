@@ -14,7 +14,7 @@ const dataObject = rows.map(row => ({
   contractName: row[1],
   client: row[2],
   startDate: row[3],
-  endDate: row[4],
+  expirationDate: row[4],
   status: row[5],
   contractValue: row[6],
   contractType: row[7],
