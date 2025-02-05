@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router'
 export const Sidebar = () => {
   const navigate = useNavigate()
   const redirects = [
-    { path: '/dashboard', label: 'Home' },
-    { path: '/dashboard/charts', label: 'Charts' },
-    { path: '/dashboard/metrics', label: 'Metrics' },
-    { path: '/dashboard/contracts', label: 'Contracts' },
+    { path: '/dashboard', label: 'Início' },
+    { path: '/dashboard/charts', label: 'Gráficos' },
+    { path: '/dashboard/metrics', label: 'Métricas' },
+    { path: '/dashboard/contracts', label: 'Contratos' },
   ]
 
   return (
