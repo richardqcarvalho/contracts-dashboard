@@ -27,3 +27,4 @@ dist-ssr
 !README.md
 *.lock
 *-lock.json
+*.tsbuildinfo
