@@ -1,6 +1,6 @@
 export const Dashboard = () => {
   return (
-    <div className='w-screen h-screen flex justify-center text-white items-center bg-blue-900'>
+    <div className='flex h-screen w-screen items-center justify-center bg-blue-900 text-white'>
       <span>Dashboard</span>
     </div>
   )
