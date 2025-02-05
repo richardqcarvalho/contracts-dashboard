@@ -23,8 +23,13 @@ dist-ssr
 *.sln
 *.sw?
 
+# Writable files unless README
 *.md
 !README.md
+
+# Lock files
 *.lock
 *-lock.json
+
+# Typescript cache
 *.tsbuildinfo
