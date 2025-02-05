@@ -1,4 +1,6 @@
 import { fastifyCors } from '@fastify/cors'
+import { ContractT } from '@type/contract'
+import { parseDate, parseValue } from '@util/parse'
 import { parse } from 'csv-parse/sync'
 import { fastify } from 'fastify'
 import { readFileSync } from 'node:fs'
@@ -9,16 +11,18 @@ const [_header, ...rows]: Array<string[]> = parse(csv.toString(), {
   delimiter: ';',
 })
 
-const dataObject = rows.map(row => ({
-  identifier: row[0],
-  contractName: row[1],
-  client: row[2],
-  startDate: row[3],
-  expirationDate: row[4],
-  status: row[5],
-  contractValue: row[6],
-  contractType: row[7],
-}))
+const dataObject: Array<ContractT> = rows.map(row => {
+  return {
+    identifier: row[0],
+    contractName: row[1],
+    client: row[2],
+    startDate: parseDate(row[3]),
+    expirationDate: parseDate(row[4]),
+    status: row[5],
+    contractValue: parseValue(row[6]),
+    contractType: row[7],
+  }
+})
 
 const startServer = async () => {
   const server = fastify()
