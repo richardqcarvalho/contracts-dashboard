@@ -6,7 +6,6 @@ export const Dashboard = () => {
   const { data, isLoading } = useQuery<ContractT[]>({
     queryKey: ['get-contracts'],
     queryFn: getContracts,
-    initialData: [],
   })
 
   return (
