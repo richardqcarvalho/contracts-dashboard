@@ -16,7 +16,8 @@
       "@type/*": ["types/*"],
       "@util/*": ["server/utils/*"],
       "@page/*": ["src/pages/*"],
-      "@router": ["src/routes"]
+      "@router": ["src/routes"],
+      "@styles": ["src/styles/index.css"]
     }
   }
 }
