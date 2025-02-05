@@ -1,6 +1,6 @@
-import { Dashboard } from '@page/dashboard'
+import { Routes } from '@router'
 import { createRoot } from 'react-dom/client'
 
 const root = document.getElementById('root') as HTMLElement
 
-createRoot(root).render(<Dashboard />)
+createRoot(root).render(<Routes />)

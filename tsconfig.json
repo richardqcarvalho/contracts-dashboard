@@ -15,7 +15,8 @@
     "paths": {
       "@type/*": ["types/*"],
       "@util/*": ["server/utils/*"],
-      "@page/*": ["src/pages/*"]
+      "@page/*": ["src/pages/*"],
+      "@router": ["src/routes"]
     }
   }
 }
