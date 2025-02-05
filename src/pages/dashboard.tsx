@@ -1,4 +1,5 @@
 import { getContracts } from '@actions'
+import { SkeletonRow, SkeletonWrapper } from '@component/skeleton'
 import { QueryStatus, useQuery } from '@tanstack/react-query'
 import { ContractT } from '@type/contract'
 
@@ -14,7 +15,18 @@ const Content = (
       return <span>Error!</span>
     case 'pending':
     default:
-      return <span>Loading...</span>
+      return (
+        <SkeletonWrapper>
+          <SkeletonRow />
+          <SkeletonRow />
+          <SkeletonRow />
+          <SkeletonRow />
+          <SkeletonRow />
+          <SkeletonRow />
+          <SkeletonRow />
+          <SkeletonRow />
+        </SkeletonWrapper>
+      )
   }
 }
 

@@ -16,6 +16,7 @@
       "@type/*": ["types/*"],
       "@util/*": ["server/utils/*"],
       "@page/*": ["src/pages/*"],
+      "@component/*": ["src/components/*"],
       "@router": ["src/routes"],
       "@actions": ["src/actions"],
       "@styles": ["src/styles/index.css"]
