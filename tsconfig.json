@@ -14,7 +14,8 @@
     "baseUrl": ".",
     "paths": {
       "@type/*": ["types/*"],
-      "@util/*": ["server/utils/*"]
+      "@util/*": ["server/utils/*"],
+      "@page/*": ["src/pages/*"]
     }
   }
 }
