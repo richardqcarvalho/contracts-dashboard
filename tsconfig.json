@@ -18,8 +18,8 @@
       "@page/*": ["src/pages/*"],
       "@component/*": ["src/components/*"],
       "@router": ["src/routes"],
-      "@actions": ["src/actions"],
-      "@styles": ["src/styles/index.css"]
+      "@action": ["src/actions"],
+      "@style": ["src/styles/index.css"]
     }
   }
 }

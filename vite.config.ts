@@ -10,8 +10,8 @@ export default defineConfig({
       '@page': path.resolve(__dirname, './src/pages'),
       '@component': path.resolve(__dirname, './src/components'),
       '@router': path.resolve(__dirname, './src/routes'),
-      '@actions': path.resolve(__dirname, './src/actions'),
-      '@styles': path.resolve(__dirname, './src/styles/index.css'),
+      '@action': path.resolve(__dirname, './src/actions'),
+      '@style': path.resolve(__dirname, './src/styles/index.css'),
     },
   },
 })

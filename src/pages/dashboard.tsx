@@ -1,4 +1,4 @@
-import { getContracts } from '@actions'
+import { getContracts } from '@action'
 import { SkeletonRow, SkeletonWrapper } from '@component/skeleton'
 import { QueryStatus, useQuery } from '@tanstack/react-query'
 import { ContractT } from '@type/contract'
