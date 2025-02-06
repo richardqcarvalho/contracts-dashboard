@@ -53,7 +53,7 @@ export const Contracts = () => {
           ))}
         </TableBody>
       </Table>
-      <AppPagination total={data.total} />
+      {data.contracts.length > 0 && <AppPagination total={data.total} />}
     </div>
   )
 }

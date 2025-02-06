@@ -13,10 +13,10 @@ import {
 import { useSearchParams } from 'react-router'
 
 export const AppPagination = (props: { total: number }) => {
-  const [searchParams, setSearchParams] = useSearchParams()
-  const selectedPage = parseInt(searchParams.get('page') || '1')
-  const count = parseInt(searchParams.get('count') || '10')
   const { total } = props
+  const [searchParams] = useSearchParams()
+  const selectedPage = parseInt(searchParams.get('page') || '1')
+  const count = parseInt(searchParams.get('count') || total.toString())
   const pages = Math.ceil(total / count)
 
   return (
@@ -47,6 +47,11 @@ export const AppPagination = (props: { total: number }) => {
             <PaginationLink
               href={`/dashboard/contracts?count=${count}&page=${page + 1}`}
               isActive={page + 1 === selectedPage}
+              className={
+                page === 0 && pages === 1
+                  ? 'pointer-events-none text-gray-400'
+                  : ''
+              }
             >
               {page + 1}
             </PaginationLink>
