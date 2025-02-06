@@ -28,17 +28,17 @@ export const Contracts = () => {
   return (
     <div className='flex size-full items-center justify-center'>
       <Table>
-        <TableHead>
+        <TableHeader>
           <TableRow>
-            <TableHeader>Identificador do Contrato</TableHeader>
-            <TableHeader>Cliente/Fornecedor</TableHeader>
-            <TableHeader>Data de Início</TableHeader>
-            <TableHeader>Data de Término/Vencimento</TableHeader>
-            <TableHeader>Status</TableHeader>
-            <TableHeader>Valor do Contrato</TableHeader>
-            <TableHeader>Tipo de Contrato</TableHeader>
+            <TableHead>Identificador do Contrato</TableHead>
+            <TableHead>Cliente/Fornecedor</TableHead>
+            <TableHead>Data de Início</TableHead>
+            <TableHead>Data de Término/Vencimento</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead>Valor do Contrato</TableHead>
+            <TableHead>Tipo de Contrato</TableHead>
           </TableRow>
-        </TableHead>
+        </TableHeader>
         <TableBody>
           {isPending ? (
             <Skeleton />
