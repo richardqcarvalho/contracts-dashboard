@@ -8,21 +8,14 @@ import {
   TableRow,
 } from '@/app/components/table'
 import { formatDate, formatValue } from '@/app/lib/utils'
-import { useConstractStore } from '@/app/store'
 import { ContractT } from '@/types/contract'
 import { useQuery } from '@tanstack/react-query'
-import { useEffect } from 'react'
 
 export const Contracts = () => {
-  const { contracts, setContracts } = useConstractStore()
-  const { data, isPending } = useQuery<ContractT[]>({
+  const { data } = useQuery<ContractT[]>({
     queryKey: ['get-contracts'],
     queryFn: getContracts,
   })
-
-  useEffect(() => {
-    if (data) setContracts(data)
-  }, [data])
 
   return (
     <div className='flex size-full items-center justify-center'>
@@ -39,7 +32,7 @@ export const Contracts = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {contracts.map(contract => (
+          {data?.map(contract => (
             <TableRow
               key={contract.id}
               className='cursor-pointer border-b transition last:border-0 hover:bg-blue-800'
