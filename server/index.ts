@@ -1,5 +1,5 @@
 import { parseDate, parseValue } from '@/server/utils/parse'
-import { ContractT, GetContractsParamsT } from '@/types/contract'
+import { ContractT } from '@/types/contract'
 import { fastifyCors } from '@fastify/cors'
 import { parse } from 'csv-parse/sync'
 import { fastify } from 'fastify'
@@ -29,7 +29,7 @@ const startServer = async () => {
   const server = fastify()
     .register(fastifyCors, { origin: '*' })
     .get('/contracts', (request, reply) => {
-      const { count, page }: GetContractsParamsT = z
+      const { count, page } = z
         .object({
           count: z.string().transform(count => parseInt(count)),
           page: z.string().transform(page => parseInt(page)),
