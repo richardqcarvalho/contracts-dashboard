@@ -1,18 +1,17 @@
-import { getContracts } from '@action'
-import { SkeletonRow, SkeletonWrapper } from '@component/skeleton'
+import { getContracts } from '@/app/actions'
+import { Skeleton } from '@/app/components/skeleton'
 import {
   Table,
   TableBody,
-  TableBodyRow,
   TableCell,
   TableHead,
   TableHeader,
-  TableHeaderRow,
-} from '@component/table'
-import { useConstractStore } from '@store'
+  TableRow,
+} from '@/app/components/table'
+import { formatDate, formatValue } from '@/app/lib/utils'
+import { useConstractStore } from '@/app/store'
+import { ContractT } from '@/types/contract'
 import { useQuery } from '@tanstack/react-query'
-import { ContractT } from '@type/contract'
-import { formatDate, formatValue } from '@util'
 import { useEffect } from 'react'
 
 export const Contracts = () => {
@@ -30,7 +29,7 @@ export const Contracts = () => {
     <div className='flex size-full items-center justify-center'>
       <Table>
         <TableHead>
-          <TableHeaderRow>
+          <TableRow>
             <TableHeader>Identificador do Contrato</TableHeader>
             <TableHeader>Cliente/Fornecedor</TableHeader>
             <TableHeader>Data de Início</TableHeader>
@@ -38,17 +37,15 @@ export const Contracts = () => {
             <TableHeader>Status</TableHeader>
             <TableHeader>Valor do Contrato</TableHeader>
             <TableHeader>Tipo de Contrato</TableHeader>
-          </TableHeaderRow>
+          </TableRow>
         </TableHead>
         <TableBody>
           {isPending ? (
-            <SkeletonWrapper>
-              <SkeletonRow count={10} />
-            </SkeletonWrapper>
+            <Skeleton />
           ) : (
             <>
               {contracts.map(contract => (
-                <TableBodyRow
+                <TableRow
                   key={contract.id}
                   className='cursor-pointer border-b transition last:border-0 hover:bg-blue-800'
                 >
@@ -59,7 +56,7 @@ export const Contracts = () => {
                   <TableCell>{contract.status}</TableCell>
                   <TableCell>{formatValue(contract.value)}</TableCell>
                   <TableCell>{contract.type}</TableCell>
-                </TableBodyRow>
+                </TableRow>
               ))}
             </>
           )}

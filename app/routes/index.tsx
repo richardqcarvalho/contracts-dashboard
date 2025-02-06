@@ -1,8 +1,8 @@
-import { DashboardHome } from '@page/dashboard'
-import { Charts } from '@page/dashboard/charts'
-import { Contracts } from '@page/dashboard/contracts'
-import { Layout } from '@page/dashboard/layout'
-import { Metrics } from '@page/dashboard/metrics'
+import { DashboardHome } from '@/app/pages/dashboard'
+import { Charts } from '@/app/pages/dashboard/charts'
+import { Contracts } from '@/app/pages/dashboard/contracts'
+import { Layout } from '@/app/pages/dashboard/layout'
+import { Metrics } from '@/app/pages/dashboard/metrics'
 import * as ReactRouter from 'react-router'
 
 export const Routes = () => {

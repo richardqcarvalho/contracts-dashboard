@@ -1,4 +1,4 @@
-import { StoreT } from '@type/store'
+import { StoreT } from '@/types/store'
 import { create } from 'zustand'
 
 const contractStore = create<StoreT>()

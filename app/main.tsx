@@ -1,5 +1,5 @@
-import { Routes } from '@router'
-import '@style'
+import { Routes } from '@/app/routes'
+import '@/app/styles/index.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { createRoot } from 'react-dom/client'
 

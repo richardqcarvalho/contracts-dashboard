@@ -8,13 +8,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
-      '@page': path.resolve(__dirname, './src/pages'),
-      '@component': path.resolve(__dirname, './src/components'),
-      '@store': path.resolve(__dirname, './src/store'),
-      '@router': path.resolve(__dirname, './src/routes'),
-      '@action': path.resolve(__dirname, './src/actions'),
-      '@util': path.resolve(__dirname, './src/utils'),
-      '@style': path.resolve(__dirname, './src/styles/index.css'),
+      '@': path.resolve(__dirname, './'),
     },
   },
 })
