@@ -9,7 +9,14 @@ export type ContractT = {
   type: string
 }
 
+export type GetContractsReturnT = {
+  contracts: ContractT[]
+  count?: number
+  page?: number
+  total?: number
+}
+
 export type GetContractsParamsT = {
-  page: number
-  count: number
+  page?: string | null
+  count?: string | null
 }

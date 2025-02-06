@@ -8,13 +8,20 @@ import {
   TableRow,
 } from '@/app/components/table'
 import { formatDate, formatValue } from '@/app/lib/utils'
-import { ContractT } from '@/types/contract'
+import { GetContractsReturnT } from '@/types/contract'
 import { useQuery } from '@tanstack/react-query'
+import { useSearchParams } from 'react-router'
 
 export const Contracts = () => {
-  const { data } = useQuery<ContractT[]>({
+  const [searchParams] = useSearchParams()
+  const { data } = useQuery<GetContractsReturnT>({
     queryKey: ['get-contracts'],
-    queryFn: getContracts,
+    queryFn: () =>
+      getContracts({
+        count: searchParams.get('count'),
+        page: searchParams.get('page'),
+      }),
+    initialData: { contracts: [] },
   })
 
   return (
@@ -32,7 +39,7 @@ export const Contracts = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data?.map(contract => (
+          {data?.contracts.map(contract => (
             <TableRow
               key={contract.id}
               className='cursor-pointer border-b transition last:border-0 hover:bg-blue-800'

@@ -1,3 +1,4 @@
+import { ObjectParamsT } from '@/types/utils'
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
@@ -13,3 +14,17 @@ export const formatValue = (value: number) =>
     currency: 'BRL',
     style: 'currency',
   })
+
+export const getObjectToQueryParams = (params?: ObjectParamsT) => {
+  if (!params) return ''
+
+  let body = ''
+  const keys = Object.keys(params).filter(key => params[key])
+
+  keys.forEach((key, index) => {
+    if (index === 0) body += `?${key}=${params[key]}`
+    else body += `&${key}=${params[key]}`
+  })
+
+  return body
+}

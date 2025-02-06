@@ -12,7 +12,7 @@ const [_header, ...rows]: Array<string[]> = parse(csv.toString(), {
   delimiter: ';',
 })
 
-const dataObject: Array<ContractT> = rows.map(row => {
+const contracts: Array<ContractT> = rows.map(row => {
   return {
     id: row[0],
     name: row[1],
@@ -35,27 +35,27 @@ const startServer = async () => {
           page: z.string().transform(page => parseInt(page)),
         })
         .parse({
-          count: 10,
-          page: 1,
+          count: '10',
+          page: '1',
           ...(request.query || {}),
         })
 
-      const total = dataObject.length
+      const total = contracts.length
       const offset = page - 1
-      const returnInfo = { count, page, total }
+      const params = { count, page, total }
 
       if (count < total) {
         if (count * offset + count > total)
           reply.send({
-            data: dataObject.slice(count * offset, total),
-            ...returnInfo,
+            contracts: contracts.slice(count * offset, total),
+            ...params,
           })
         else
           reply.send({
-            data: dataObject.slice(count * offset, count * offset + count),
-            ...returnInfo,
+            contracts: contracts.slice(count * offset, count * offset + count),
+            ...params,
           })
-      } else reply.send({ data: dataObject, ...returnInfo })
+      } else reply.send({ contracts, ...params })
     })
 
   await server.listen({
