@@ -8,3 +8,8 @@ export type ContractT = {
   value: number
   type: string
 }
+
+export type GetContractsParamsT = {
+  page: number
+  count: number
+}
