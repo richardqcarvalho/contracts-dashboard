@@ -25,7 +25,7 @@ export const Contracts = () => {
   })
 
   return (
-    <div className='flex size-full items-center justify-center'>
+    <div className='flex flex-1 flex-col gap-4 overflow-auto p-4'>
       <Table>
         <TableHeader>
           <TableRow>
@@ -40,10 +40,7 @@ export const Contracts = () => {
         </TableHeader>
         <TableBody>
           {data?.contracts.map(contract => (
-            <TableRow
-              key={contract.id}
-              className='cursor-pointer border-b transition last:border-0 hover:bg-blue-800'
-            >
+            <TableRow key={contract.id}>
               <TableCell>{contract.id}</TableCell>
               <TableCell>{contract.client}</TableCell>
               <TableCell>{formatDate(contract.startDate)}</TableCell>

@@ -7,11 +7,15 @@ import { Outlet } from 'react-router'
 
 export const Layout = () => {
   return (
-    <SidebarProvider>
-      <div className='flex h-screen w-screen items-center justify-center bg-blue-900 text-white'>
-        <AppSidebar />
-        <SidebarTrigger />
-        <Outlet />
+    <SidebarProvider className='flex h-svh w-full'>
+      <AppSidebar />
+      <div className='flex size-full flex-col'>
+        <div className='sticky top-0 z-10 bg-white p-3'>
+          <SidebarTrigger />
+        </div>
+        <div className='flex flex-1'>
+          <Outlet />
+        </div>
       </div>
     </SidebarProvider>
   )
