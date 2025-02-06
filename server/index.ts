@@ -1,5 +1,5 @@
 import { parseDate, parseValue } from '@/server/utils/parse'
-import { ContractT } from '@/types/contract'
+import { ContractStatusT, ContractT, ContractTypeT } from '@/types/contract'
 import { fastifyCors } from '@fastify/cors'
 import { parse } from 'csv-parse/sync'
 import { fastify } from 'fastify'
@@ -19,9 +19,9 @@ const contracts: Array<ContractT> = rows.map(row => {
     client: row[2],
     startDate: parseDate(row[3]),
     expirationDate: parseDate(row[4]),
-    status: row[5],
+    status: row[5] as ContractStatusT,
     value: parseValue(row[6]),
-    type: row[7],
+    type: row[7] as ContractTypeT,
   }
 })
 
@@ -35,7 +35,7 @@ const startServer = async () => {
           page: z.string().transform(page => parseInt(page)),
         })
         .parse({
-          count: '10',
+          count: contracts.length.toString(),
           page: '1',
           ...(request.query || {}),
         })
