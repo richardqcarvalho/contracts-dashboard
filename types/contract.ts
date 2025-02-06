@@ -17,6 +17,6 @@ export type GetContractsReturnT = {
 }
 
 export type GetContractsParamsT = {
-  page?: string | null
-  count?: string | null
+  page: number
+  count: number
 }

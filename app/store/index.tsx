@@ -1,9 +1,11 @@
-import { StoreT } from '@/types/store'
+import { FiltersStoreT } from '@/types/store'
 import { create } from 'zustand'
 
-const filtersStore = create<StoreT>()
+const filtersStore = create<FiltersStoreT>()
 
 export const useFiltersStore = filtersStore(set => ({
-  count: 5,
+  count: 10,
   setCount: count => set({ count }),
+  page: 1,
+  setPage: page => set({ page }),
 }))

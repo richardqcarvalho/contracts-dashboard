@@ -8,18 +8,18 @@ import {
   TableRow,
 } from '@/app/components/table'
 import { formatDate, formatValue } from '@/app/lib/utils'
+import { useFiltersStore } from '@/app/store'
 import { GetContractsReturnT } from '@/types/contract'
 import { useQuery } from '@tanstack/react-query'
-import { useSearchParams } from 'react-router'
 
 export const Contracts = () => {
-  const [searchParams] = useSearchParams()
+  const { count, page } = useFiltersStore()
   const { data } = useQuery<GetContractsReturnT>({
     queryKey: ['get-contracts'],
     queryFn: () =>
       getContracts({
-        count: searchParams.get('count'),
-        page: searchParams.get('page'),
+        count,
+        page,
       }),
     initialData: { contracts: [] },
   })

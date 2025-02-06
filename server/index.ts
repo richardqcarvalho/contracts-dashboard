@@ -4,7 +4,6 @@ import { fastifyCors } from '@fastify/cors'
 import { parse } from 'csv-parse/sync'
 import { fastify } from 'fastify'
 import { readFileSync } from 'node:fs'
-import { z } from 'zod'
 
 const csv = readFileSync('server/data/contracts.csv')
 
@@ -29,16 +28,11 @@ const startServer = async () => {
   const server = fastify()
     .register(fastifyCors, { origin: '*' })
     .get('/contracts', (request, reply) => {
-      const { count, page } = z
-        .object({
-          count: z.string().transform(count => parseInt(count)),
-          page: z.string().transform(page => parseInt(page)),
-        })
-        .parse({
-          count: '10',
-          page: '1',
-          ...(request.query || {}),
-        })
+      const { count, page } = {
+        count: 10,
+        page: 1,
+        ...(request.query || {}),
+      }
 
       const total = contracts.length
       const offset = page - 1

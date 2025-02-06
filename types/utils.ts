@@ -1,3 +1,3 @@
 export type ObjectParamsT = {
-  [key: string]: string | null
+  [key: string]: string | number
 }
