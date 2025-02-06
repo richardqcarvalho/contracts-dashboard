@@ -11,12 +11,10 @@ export type ContractT = {
 
 export type GetContractsReturnT = {
   contracts: ContractT[]
-  count?: number
-  page?: number
-  total?: number
+  total: number
 }
 
 export type GetContractsParamsT = {
-  page: number
-  count: number
+  page: string | null
+  count: string | null
 }

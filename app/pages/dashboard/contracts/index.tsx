@@ -1,4 +1,5 @@
 import { getContracts } from '@/app/actions'
+import { AppPagination } from '@/app/components/app-pagination'
 import {
   Table,
   TableBody,
@@ -8,20 +9,20 @@ import {
   TableRow,
 } from '@/app/components/primitives/table'
 import { formatDate, formatValue } from '@/app/lib/utils'
-import { useFiltersStore } from '@/app/store'
 import { GetContractsReturnT } from '@/types/contract'
 import { useQuery } from '@tanstack/react-query'
+import { useSearchParams } from 'react-router'
 
 export const Contracts = () => {
-  const { count, page } = useFiltersStore()
+  const [searchParams] = useSearchParams()
   const { data } = useQuery<GetContractsReturnT>({
     queryKey: ['get-contracts'],
     queryFn: () =>
       getContracts({
-        count,
-        page,
+        count: searchParams.get('count'),
+        page: searchParams.get('page'),
       }),
-    initialData: { contracts: [] },
+    initialData: { contracts: [], total: 0 },
   })
 
   return (
@@ -39,7 +40,7 @@ export const Contracts = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data?.contracts.map(contract => (
+          {data.contracts.map(contract => (
             <TableRow key={contract.id}>
               <TableCell>{contract.id}</TableCell>
               <TableCell>{contract.client}</TableCell>
@@ -52,6 +53,7 @@ export const Contracts = () => {
           ))}
         </TableBody>
       </Table>
+      <AppPagination total={data.total} />
     </div>
   )
 }
