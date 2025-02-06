@@ -63,7 +63,7 @@ const startServer = async () => {
     host: '0.0.0.0',
   })
 
-  console.log('Server ready to receive request')
+  console.log('Server ready to receive requests')
 }
 
 startServer()
