@@ -33,6 +33,17 @@ const startServer = async () => {
         .object({
           count: z.string().transform(count => parseInt(count)),
           page: z.string().transform(page => parseInt(page)),
+          status: z
+            .enum([
+              'Ativo',
+              'Expirado',
+              'Pendente de Renovação',
+              'Próximo ao Vencimento',
+            ])
+            .optional(),
+          type: z
+            .enum(['Serviço', 'Fornecimento', 'Consultoria', 'TI'])
+            .optional(),
         })
         .parse({
           count: contracts.length.toString(),
@@ -42,7 +53,33 @@ const startServer = async () => {
 
       const total = contracts.length
       const offset = page - 1
-      const params = { count, page, total }
+      const params = {
+        total,
+        amountByStatus: contracts.reduce(
+          (amounts, contract) => {
+            const status = amounts.find(
+              amount => amount.status === contract.status,
+            )
+
+            if (status) amounts[amounts.indexOf(status)].amount += 1
+            else amounts.push({ status: contract.status, amount: 1 })
+
+            return amounts
+          },
+          [] as { status: ContractStatusT; amount: number }[],
+        ),
+        amountByType: contracts.reduce(
+          (amounts, contract) => {
+            const type = amounts.find(amount => amount.type === contract.type)
+
+            if (type) amounts[amounts.indexOf(type)].amount += 1
+            else amounts.push({ type: contract.type, amount: 1 })
+
+            return amounts
+          },
+          [] as { type: ContractTypeT; amount: number }[],
+        ),
+      }
 
       if (count < total) {
         if (count * offset + count > total)

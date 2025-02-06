@@ -20,6 +20,8 @@ export type ContractT = {
 export type GetContractsReturnT = {
   contracts: ContractT[]
   total: number
+  amountByType?: { type: ContractTypeT; amount: number }[]
+  amountByStatus?: { status: ContractStatusT; amount: number }[]
 }
 
 export type GetContractsParamsT = {
