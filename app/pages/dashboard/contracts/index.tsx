@@ -6,7 +6,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/app/components/table'
+} from '@/app/components/primitives/table'
 import { formatDate, formatValue } from '@/app/lib/utils'
 import { useFiltersStore } from '@/app/store'
 import { GetContractsReturnT } from '@/types/contract'

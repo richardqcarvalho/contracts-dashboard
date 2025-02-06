@@ -1,5 +1,8 @@
 import { AppSidebar } from '@/app/components/app-sidebar'
-import { SidebarProvider, SidebarTrigger } from '@/app/components/sidebar'
+import {
+  SidebarProvider,
+  SidebarTrigger,
+} from '@/app/components/primitives/sidebar'
 import { Outlet } from 'react-router'
 
 export const Layout = () => {

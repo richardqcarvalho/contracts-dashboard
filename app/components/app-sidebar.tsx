@@ -6,7 +6,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from '@/app/components/sidebar'
+} from '@/app/components/primitives/sidebar'
 import { useNavigate } from 'react-router'
 
 const items = [
