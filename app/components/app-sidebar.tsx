@@ -37,7 +37,7 @@ export function AppSidebar() {
 
   return (
     <Sidebar
-      className='rounded-tr-xl rounded-br-xl bg-blue-800'
+      className='rounded-br-xl rounded-tr-xl bg-blue-800'
       variant='inset'
       collapsible='icon'
     >
