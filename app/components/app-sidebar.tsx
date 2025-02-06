@@ -53,7 +53,7 @@ export const AppSidebar = ({
                 <SidebarMenuButton>
                   <span>Dashboard</span>
                   <div className='transition group-data-[state=open]:rotate-90'>
-                    <ChevronRight />
+                    <ChevronRight size={16} />
                     <span className='sr-only'>Toggle</span>
                   </div>
                 </SidebarMenuButton>
