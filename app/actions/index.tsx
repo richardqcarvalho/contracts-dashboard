@@ -1,10 +1,12 @@
 import { getObjectToQueryParams } from '@/app/lib/utils'
-import { GetContractsParamsT } from '@/types/contract'
+import { GetContractsParamsT, GetContractsReturnT } from '@/types/contract'
 
 export const getContracts = async (requestParams: GetContractsParamsT) => {
   const queryParams = getObjectToQueryParams(requestParams)
-  const response = await fetch('http://localhost:4000/contracts' + queryParams)
-  const contracts = await response.json()
+  const response = await fetch(
+    'http://192.168.1.100:4000/contracts' + queryParams,
+  )
+  const data: GetContractsReturnT = await response.json()
 
-  return contracts
+  return data
 }
