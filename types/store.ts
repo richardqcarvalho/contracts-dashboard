@@ -1,4 +1,4 @@
-import { ContractT } from '@type/contract'
+import { ContractT } from '@/types/contract'
 
 export type StoreT = {
   contracts: ContractT[]
