@@ -1,5 +1,4 @@
 import { getContracts } from '@/app/actions'
-import { Skeleton } from '@/app/components/skeleton'
 import {
   Table,
   TableBody,
@@ -40,26 +39,20 @@ export const Contracts = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {isPending ? (
-            <Skeleton />
-          ) : (
-            <>
-              {contracts.map(contract => (
-                <TableRow
-                  key={contract.id}
-                  className='cursor-pointer border-b transition last:border-0 hover:bg-blue-800'
-                >
-                  <TableCell>{contract.id}</TableCell>
-                  <TableCell>{contract.client}</TableCell>
-                  <TableCell>{formatDate(contract.startDate)}</TableCell>
-                  <TableCell>{formatDate(contract.expirationDate)}</TableCell>
-                  <TableCell>{contract.status}</TableCell>
-                  <TableCell>{formatValue(contract.value)}</TableCell>
-                  <TableCell>{contract.type}</TableCell>
-                </TableRow>
-              ))}
-            </>
-          )}
+          {contracts.map(contract => (
+            <TableRow
+              key={contract.id}
+              className='cursor-pointer border-b transition last:border-0 hover:bg-blue-800'
+            >
+              <TableCell>{contract.id}</TableCell>
+              <TableCell>{contract.client}</TableCell>
+              <TableCell>{formatDate(contract.startDate)}</TableCell>
+              <TableCell>{formatDate(contract.expirationDate)}</TableCell>
+              <TableCell>{contract.status}</TableCell>
+              <TableCell>{formatValue(contract.value)}</TableCell>
+              <TableCell>{contract.type}</TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </div>
