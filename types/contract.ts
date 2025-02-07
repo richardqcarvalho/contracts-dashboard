@@ -17,14 +17,30 @@ export type ContractT = {
   type: ContractTypeT
 }
 
-export type GetContractsReturnT = {
-  contracts: ContractT[]
-  total: number
-  amountByType?: { type: ContractTypeT; amount: number }[]
-  amountByStatus?: { status: ContractStatusT; amount: number }[]
+type ContractsSharedPropsT = {
+  items: number
+  first?: number
+  prev?: number | null
+  next?: number | null
+  last?: number
+  pages?: number
 }
 
+export type GetContractsReturnT = {
+  data: ContractT[]
+} & ContractsSharedPropsT
+
+export type ContractsQueryT = {
+  contracts: ContractT[]
+  items: number
+  first?: number
+  prev?: number | null
+  next?: number | null
+  last?: number
+  pages?: number
+} & ContractsSharedPropsT
+
 export type GetContractsParamsT = {
-  page: string | null
-  count: string | null
+  _page: string | null
+  _per_page: string | null
 }

@@ -9,20 +9,22 @@ import {
   TableRow,
 } from '@/app/components/primitives/table'
 import { formatDate, formatValue } from '@/app/lib/utils'
-import { GetContractsReturnT } from '@/types/contract'
+import { ContractsQueryT } from '@/types/contract'
 import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'react-router'
 
 export const Contracts = () => {
   const [searchParams] = useSearchParams()
-  const { data } = useQuery<GetContractsReturnT>({
-    queryKey: ['get-contracts'],
+  const selectedPage = searchParams.get('page') || '1'
+  const perPage = searchParams.get('per_page') || '10'
+  const { data } = useQuery<ContractsQueryT>({
+    queryKey: ['get-contracts', selectedPage, perPage],
     queryFn: () =>
       getContracts({
-        count: searchParams.get('count'),
-        page: searchParams.get('page'),
+        _page: selectedPage,
+        _per_page: perPage,
       }),
-    initialData: { contracts: [], total: 0 },
+    initialData: { contracts: [], items: 0 },
   })
 
   return (
@@ -53,7 +55,18 @@ export const Contracts = () => {
           ))}
         </TableBody>
       </Table>
-      {data.contracts.length > 0 && <AppPagination total={data.total} />}
+      {data.items > 0 && (
+        <AppPagination
+          items={data.items}
+          first={data.first}
+          prev={data.prev}
+          next={data.next}
+          last={data.last}
+          pages={data.pages}
+          selectedPage={selectedPage}
+          perPage={perPage}
+        />
+      )}
     </div>
   )
 }

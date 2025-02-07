@@ -28,3 +28,6 @@ export const getObjectToQueryParams = (params?: ObjectParamsT) => {
 
   return body
 }
+
+export const parseInts = (numbers: string[]) =>
+  numbers.map(number => (number ? parseInt(number) : 0))

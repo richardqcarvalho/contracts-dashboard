@@ -1,0 +1,154 @@
+{
+  "contracts": [
+    {
+      "id": "CT-001",
+      "name": "Manutenção TI",
+      "client": "ABC Ltda.",
+      "startDate": "2023-01-15T00:00:00.000Z",
+      "expirationDate": "2025-01-15T00:00:00.000Z",
+      "status": "Ativo",
+      "value": 150000,
+      "type": "Serviço"
+    },
+    {
+      "id": "CT-002",
+      "name": "Fornecimento Materiais",
+      "client": "XYZ S.A.",
+      "startDate": "2022-06-10T00:00:00.000Z",
+      "expirationDate": "2024-06-10T00:00:00.000Z",
+      "status": "Expirado",
+      "value": 200000,
+      "type": "Fornecimento"
+    },
+    {
+      "id": "CT-003",
+      "name": "Consultoria Financeira",
+      "client": "123 Consulting",
+      "startDate": "2023-09-01T00:00:00.000Z",
+      "expirationDate": "2024-09-01T00:00:00.000Z",
+      "status": "Pendente de Renovação",
+      "value": 100000,
+      "type": "Consultoria"
+    },
+    {
+      "id": "CT-004",
+      "name": "Desenvolvimento Web",
+      "client": "Empresa Beta",
+      "startDate": "2024-02-20T00:00:00.000Z",
+      "expirationDate": "2026-02-20T00:00:00.000Z",
+      "status": "Ativo",
+      "value": 300000,
+      "type": "Serviço"
+    },
+    {
+      "id": "CT-005",
+      "name": "Suporte Técnico",
+      "client": "Fornecedor Z",
+      "startDate": "2023-07-01T00:00:00.000Z",
+      "expirationDate": "2024-07-01T00:00:00.000Z",
+      "status": "Próximo ao Vencimento",
+      "value": 80000,
+      "type": "Fornecimento"
+    },
+    {
+      "id": "CT-006",
+      "name": "Software ERP",
+      "client": "Tech Solutions",
+      "startDate": "2022-12-10T00:00:00.000Z",
+      "expirationDate": "2024-12-10T00:00:00.000Z",
+      "status": "Ativo",
+      "value": 250000,
+      "type": "TI"
+    },
+    {
+      "id": "CT-007",
+      "name": "Consultoria RH",
+      "client": "Alpha Corp.",
+      "startDate": "2023-05-05T00:00:00.000Z",
+      "expirationDate": "2025-05-05T00:00:00.000Z",
+      "status": "Ativo",
+      "value": 175000,
+      "type": "Consultoria"
+    },
+    {
+      "id": "CT-008",
+      "name": "Treinamento TI",
+      "client": "Delta Group",
+      "startDate": "2023-08-15T00:00:00.000Z",
+      "expirationDate": "2024-08-15T00:00:00.000Z",
+      "status": "Próximo ao Vencimento",
+      "value": 90000,
+      "type": "Serviço"
+    },
+    {
+      "id": "CT-009",
+      "name": "Segurança Digital",
+      "client": "Beta Tech",
+      "startDate": "2023-11-25T00:00:00.000Z",
+      "expirationDate": "2025-11-25T00:00:00.000Z",
+      "status": "Ativo",
+      "value": 120000,
+      "type": "TI"
+    },
+    {
+      "id": "CT-010",
+      "name": "Logística e Transporte",
+      "client": "Global Partners",
+      "startDate": "2021-09-30T00:00:00.000Z",
+      "expirationDate": "2023-09-30T00:00:00.000Z",
+      "status": "Expirado",
+      "value": 210000,
+      "type": "Fornecimento"
+    },
+    {
+      "id": "CT-011",
+      "name": "Auditoria Fiscal",
+      "client": "Compliance Corp",
+      "startDate": "2023-04-20T00:00:00.000Z",
+      "expirationDate": "2024-04-20T00:00:00.000Z",
+      "status": "Próximo ao Vencimento",
+      "value": 95000,
+      "type": "Consultoria"
+    },
+    {
+      "id": "CT-012",
+      "name": "Infraestrutura Cloud",
+      "client": "CloudTech Ltda.",
+      "startDate": "2023-06-15T00:00:00.000Z",
+      "expirationDate": "2025-06-15T00:00:00.000Z",
+      "status": "Ativo",
+      "value": 320000,
+      "type": "TI"
+    },
+    {
+      "id": "CT-013",
+      "name": "Fornecimento de Hardware",
+      "client": "Hardware Solutions",
+      "startDate": "2022-10-01T00:00:00.000Z",
+      "expirationDate": "2024-10-01T00:00:00.000Z",
+      "status": "Pendente de Renovação",
+      "value": 180000,
+      "type": "Fornecimento"
+    },
+    {
+      "id": "CT-014",
+      "name": "Consultoria Estratégica",
+      "client": "Strategy Experts",
+      "startDate": "2023-12-10T00:00:00.000Z",
+      "expirationDate": "2026-12-10T00:00:00.000Z",
+      "status": "Ativo",
+      "value": 400000,
+      "type": "Consultoria"
+    },
+    {
+      "id": "CT-015",
+      "name": "Manutenção Predial",
+      "client": "BuildTech",
+      "startDate": "2023-02-15T00:00:00.000Z",
+      "expirationDate": "2024-02-15T00:00:00.000Z",
+      "status": "Expirado",
+      "value": 220000,
+      "type": "Serviço"
+    }
+  ]
+}

@@ -3,10 +3,12 @@ import { GetContractsParamsT, GetContractsReturnT } from '@/types/contract'
 
 export const getContracts = async (requestParams: GetContractsParamsT) => {
   const queryParams = getObjectToQueryParams(requestParams)
+  console.log('http://192.168.1.100:3000/contracts' + queryParams)
   const response = await fetch(
-    'http://192.168.1.100:4000/contracts' + queryParams,
+    'http://192.168.1.100:3000/contracts' + queryParams,
   )
-  const data: GetContractsReturnT = await response.json()
+  const { data: contracts, ...rest }: GetContractsReturnT =
+    await response.json()
 
-  return data
+  return { contracts, ...rest }
 }
