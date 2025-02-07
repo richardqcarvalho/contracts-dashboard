@@ -13,7 +13,7 @@ import {
   ContractsQueryT,
   ContractStatusT,
   ContractTypeT,
-} from '@/types/contract'
+} from '@/app/types/contract'
 import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'react-router'
 import { Bar, BarChart, Cell, LabelList, XAxis, YAxis } from 'recharts'

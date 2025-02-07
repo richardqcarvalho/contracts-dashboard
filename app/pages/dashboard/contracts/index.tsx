@@ -9,7 +9,7 @@ import {
   TableRow,
 } from '@/app/components/primitives/table'
 import { formatDate, formatValue } from '@/app/lib/utils'
-import { ContractsQueryT } from '@/types/contract'
+import { ContractsQueryT } from '@/app/types/contract'
 import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'react-router'
 

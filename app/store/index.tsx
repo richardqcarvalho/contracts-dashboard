@@ -1,4 +1,4 @@
-import { FiltersStoreT } from '@/types/store'
+import { FiltersStoreT } from '@/app/types/store'
 import { create } from 'zustand'
 
 const filtersStore = create<FiltersStoreT>()

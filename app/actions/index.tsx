@@ -1,5 +1,5 @@
 import { getObjectToQueryParams } from '@/app/lib/utils'
-import { GetContractsParamsT, GetContractsReturnT } from '@/types/contract'
+import { GetContractsParamsT, GetContractsReturnT } from '@/app/types/contract'
 
 export const getContracts = async (requestParams?: GetContractsParamsT) => {
   const queryParams = getObjectToQueryParams(requestParams)

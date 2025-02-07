@@ -4,8 +4,8 @@ import {
   ContractT,
   GetAmountByStatusT,
   GetAmountByTypeT,
-} from '@/types/contract'
-import { ObjectParamsT } from '@/types/utils'
+} from '@/app/types/contract'
+import { ObjectParamsT } from '@/app/types/utils'
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 

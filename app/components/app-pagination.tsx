@@ -13,7 +13,7 @@ import {
   SelectValue,
 } from '@/app/components/primitives/select'
 import { parseInts } from '@/app/lib/utils'
-import { AppPaginationPropsT } from '@/types/components'
+import { AppPaginationPropsT } from '@/app/types/components'
 import {
   ChevronLeft,
   ChevronRight,

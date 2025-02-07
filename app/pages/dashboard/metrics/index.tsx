@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from '@/app/components/primitives/card'
 import { formatValue } from '@/app/lib/utils'
-import { ContractsQueryT } from '@/types/contract'
+import { ContractsQueryT } from '@/app/types/contract'
 import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'react-router'
 
