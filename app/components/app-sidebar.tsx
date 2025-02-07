@@ -41,10 +41,7 @@ export const AppSidebar = ({
     <SidebarContent>
       <SidebarGroup>
         <SidebarMenu>
-          <Collapsible
-            asChild
-            defaultOpen
-          >
+          <Collapsible asChild>
             <SidebarMenuItem>
               <CollapsibleTrigger
                 className='group flex justify-between'
