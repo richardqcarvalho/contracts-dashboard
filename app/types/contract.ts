@@ -18,7 +18,7 @@ export type ContractT = {
 }
 
 type ContractsSharedPropsT = {
-  items: number
+  items?: number
   first?: number
   prev?: number | null
   next?: number | null

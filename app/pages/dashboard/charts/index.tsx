@@ -15,21 +15,13 @@ import {
   ContractTypeT,
 } from '@/app/types/contract'
 import { useQuery } from '@tanstack/react-query'
-import { useSearchParams } from 'react-router'
 import { Bar, BarChart, Cell, LabelList, XAxis, YAxis } from 'recharts'
 
 export const Charts = () => {
-  const [searchParams] = useSearchParams()
-  const selectedPage = searchParams.get('page') || '1'
-  const perPage = searchParams.get('per_page') || '10'
   const { data } = useQuery<ContractsQueryT>({
-    queryKey: ['get-contracts', selectedPage, perPage],
-    queryFn: () =>
-      getContracts({
-        _page: selectedPage,
-        _per_page: perPage,
-      }),
-    initialData: { contracts: [], items: 0 },
+    queryKey: ['get-contracts'],
+    queryFn: () => getContracts(),
+    initialData: { contracts: [] },
   })
   const amountByStatus: AmountByStatusT = getAmountByStatus(data.contracts)
   const amountByType: AmountByTypeT = getAmountByType(data.contracts)
@@ -89,7 +81,7 @@ export const Charts = () => {
                 <LabelList
                   dataKey='amount'
                   position='insideRight'
-                  offset={12}
+                  offset={8}
                   className='fill-[--color-background]'
                   fontSize={16}
                   fontWeight={600}
@@ -97,7 +89,7 @@ export const Charts = () => {
                 <LabelList
                   dataKey='status'
                   position='right'
-                  offset={12}
+                  offset={8}
                   className='fill-[--color-chart]'
                   fontSize={12}
                   fontWeight={600}

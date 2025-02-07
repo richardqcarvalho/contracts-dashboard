@@ -9,27 +9,19 @@ import {
 import { formatValue } from '@/app/lib/utils'
 import { ContractsQueryT } from '@/app/types/contract'
 import { useQuery } from '@tanstack/react-query'
-import { useSearchParams } from 'react-router'
 
 export const Metrics = () => {
-  const [searchParams] = useSearchParams()
-  const selectedPage = searchParams.get('page') || '1'
-  const perPage = searchParams.get('per_page') || '10'
   const { data } = useQuery<ContractsQueryT>({
     queryKey: ['get-contracts'],
-    queryFn: () =>
-      getContracts({
-        _page: selectedPage,
-        _per_page: perPage,
-      }),
-    initialData: { contracts: [], items: 0 },
+    queryFn: () => getContracts(),
+    initialData: { contracts: [] },
   })
 
   const cards = [
     {
       title: 'Total number of contracts',
       description: 'Total numbers of contracts registered',
-      content: data.items,
+      content: data.contracts.length,
     },
     {
       title: 'Active contracts',

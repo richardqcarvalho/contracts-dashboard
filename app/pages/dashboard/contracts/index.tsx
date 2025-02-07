@@ -55,7 +55,7 @@ export const Contracts = () => {
           ))}
         </TableBody>
       </Table>
-      {data.items > 0 && (
+      {data.items && (
         <AppPagination
           items={data.items}
           first={data.first}
