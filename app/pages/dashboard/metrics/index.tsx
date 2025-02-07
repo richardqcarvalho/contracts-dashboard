@@ -52,7 +52,7 @@ export const Metrics = () => {
   ]
 
   return (
-    <div className='grid size-full grid-cols-2 gap-2 p-4'>
+    <div className='grid size-full grid-cols-2 gap-4 p-4'>
       {cards.map(card => (
         <Card
           key={card.title}
