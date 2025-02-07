@@ -1,4 +1,5 @@
 import { getContracts } from '@/app/actions'
+import { AppDrawer } from '@/app/components/app-drawer'
 import { AppPagination } from '@/app/components/app-pagination'
 import {
   Table,
@@ -9,11 +10,23 @@ import {
   TableRow,
 } from '@/app/components/primitives/table'
 import { formatDate, formatValue } from '@/app/lib/utils'
-import { ContractsQueryT } from '@/app/types/contract'
+import { ContractsQueryT, ContractT } from '@/app/types/contract'
 import { useQuery } from '@tanstack/react-query'
+import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router'
 
 export const Contracts = () => {
+  const [open, setOpen] = useState(false)
+  const [drawerData, setDrawerData] = useState<ContractT>({
+    client: '',
+    expirationDate: '',
+    id: '',
+    name: '',
+    startDate: '',
+    status: 'Ativo',
+    type: 'Consultoria',
+    value: 0,
+  })
   const [searchParams] = useSearchParams()
   const selectedPage = searchParams.get('page') || '1'
   const perPage = searchParams.get('per_page') || '10'
@@ -27,23 +40,36 @@ export const Contracts = () => {
     initialData: { contracts: [], items: 0 },
   })
 
+  useEffect(() => {
+    if (drawerData.id) setOpen(true)
+  }, [drawerData])
+
   return (
     <div className='flex flex-1 flex-col gap-4 overflow-auto p-4'>
+      <AppDrawer
+        open={open}
+        setOpen={setOpen}
+        data={drawerData as ContractT}
+      />
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Identificador do Contrato</TableHead>
-            <TableHead>Cliente/Fornecedor</TableHead>
-            <TableHead>Data de Início</TableHead>
-            <TableHead>Data de Término/Vencimento</TableHead>
+            <TableHead>Contract ID</TableHead>
+            <TableHead>Client</TableHead>
+            <TableHead>Start date</TableHead>
+            <TableHead>Expiration date</TableHead>
             <TableHead>Status</TableHead>
-            <TableHead>Valor do Contrato</TableHead>
-            <TableHead>Tipo de Contrato</TableHead>
+            <TableHead>Value</TableHead>
+            <TableHead>Type</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {data.contracts.map(contract => (
-            <TableRow key={contract.id}>
+            <TableRow
+              onClick={() => setDrawerData(contract)}
+              key={contract.id}
+              className='cursor-pointer'
+            >
               <TableCell>{contract.id}</TableCell>
               <TableCell>{contract.client}</TableCell>
               <TableCell>{formatDate(contract.startDate)}</TableCell>
