@@ -38,3 +38,11 @@ export type GetContractsParamsT = {
   _page: string | null
   _per_page: string | null
 }
+
+export type AmountByStatusT = { status: ContractStatusT; amount: number }[]
+
+export type AmountByTypeT = { type: ContractTypeT; amount: number }[]
+
+export type GetAmountByStatusT = (contracts: ContractT[]) => AmountByStatusT
+
+export type GetAmountByTypeT = (contracts: ContractT[]) => AmountByTypeT

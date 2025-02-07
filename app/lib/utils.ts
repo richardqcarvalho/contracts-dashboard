@@ -1,3 +1,10 @@
+import {
+  AmountByStatusT,
+  AmountByTypeT,
+  ContractT,
+  GetAmountByStatusT,
+  GetAmountByTypeT,
+} from '@/types/contract'
 import { ObjectParamsT } from '@/types/utils'
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
@@ -31,3 +38,23 @@ export const getObjectToQueryParams = (params?: ObjectParamsT) => {
 
 export const parseInts = (numbers: string[]) =>
   numbers.map(number => (number ? parseInt(number) : 0))
+
+export const getAmountByStatus: GetAmountByStatusT = (contracts: ContractT[]) =>
+  contracts.reduce((amounts, contract) => {
+    const status = amounts.find(amount => amount.status === contract.status)
+
+    if (status) amounts[amounts.indexOf(status)].amount += 1
+    else amounts.push({ status: contract.status, amount: 1 })
+
+    return amounts
+  }, [] as AmountByStatusT)
+
+export const getAmountByType: GetAmountByTypeT = (contracts: ContractT[]) =>
+  contracts.reduce((amounts, contract) => {
+    const type = amounts.find(amount => amount.type === contract.type)
+
+    if (type) amounts[amounts.indexOf(type)].amount += 1
+    else amounts.push({ type: contract.type, amount: 1 })
+
+    return amounts
+  }, [] as AmountByTypeT)

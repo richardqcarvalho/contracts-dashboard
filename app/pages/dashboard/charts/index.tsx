@@ -6,10 +6,13 @@ import {
   CardTitle,
 } from '@/app/components/primitives/card'
 import { ChartContainer } from '@/app/components/primitives/chart'
+import { getAmountByStatus, getAmountByType } from '@/app/lib/utils'
 import {
+  AmountByStatusT,
+  AmountByTypeT,
+  ContractsQueryT,
   ContractStatusT,
   ContractTypeT,
-  GetContractsReturnT,
 } from '@/types/contract'
 import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'react-router'
@@ -17,18 +20,19 @@ import { Bar, BarChart, Cell, LabelList, XAxis, YAxis } from 'recharts'
 
 export const Charts = () => {
   const [searchParams] = useSearchParams()
-  const { data } = useQuery<GetContractsReturnT>({
-    queryKey: ['get-contracts'],
+  const selectedPage = searchParams.get('page') || '1'
+  const perPage = searchParams.get('per_page') || '10'
+  const { data } = useQuery<ContractsQueryT>({
+    queryKey: ['get-contracts', selectedPage, perPage],
     queryFn: () =>
       getContracts({
-        count: searchParams.get('count'),
-        page: searchParams.get('page'),
+        _page: selectedPage,
+        _per_page: perPage,
       }),
-    initialData: {
-      contracts: [],
-      total: 0,
-    },
+    initialData: { contracts: [], items: 0 },
   })
+  const amountByStatus: AmountByStatusT = getAmountByStatus(data.contracts)
+  const amountByType: AmountByTypeT = getAmountByType(data.contracts)
   const chartConfig = {
     chart: {
       color: 'hsl(var(--primary))',
@@ -63,7 +67,7 @@ export const Charts = () => {
           <ChartContainer config={chartConfig}>
             <BarChart
               accessibilityLayer
-              data={data.amountByStatus}
+              data={amountByStatus}
               layout='vertical'
               compact
             >
@@ -99,7 +103,7 @@ export const Charts = () => {
                   fontWeight={600}
                   formatter={(value: ContractStatusT) => translate(value)}
                 />
-                {data.amountByStatus?.map(({ status }, index) => (
+                {amountByStatus.map(({ status }, index) => (
                   <Cell
                     key={index}
                     fill={`${status === 'Próximo ao Vencimento' ? 'hsl(var(--destructive))' : ''}`}
@@ -118,7 +122,7 @@ export const Charts = () => {
           <ChartContainer config={chartConfig}>
             <BarChart
               accessibilityLayer
-              data={data.amountByType}
+              data={amountByType}
               layout='vertical'
             >
               <YAxis
