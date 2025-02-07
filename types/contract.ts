@@ -32,12 +32,6 @@ export type GetContractsReturnT = {
 
 export type ContractsQueryT = {
   contracts: ContractT[]
-  items: number
-  first?: number
-  prev?: number | null
-  next?: number | null
-  last?: number
-  pages?: number
 } & ContractsSharedPropsT
 
 export type GetContractsParamsT = {

@@ -7,27 +7,29 @@ import {
   CardTitle,
 } from '@/app/components/primitives/card'
 import { formatValue } from '@/app/lib/utils'
-import { GetContractsReturnT } from '@/types/contract'
+import { ContractsQueryT } from '@/types/contract'
 import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'react-router'
 
 export const Metrics = () => {
   const [searchParams] = useSearchParams()
-  const { data } = useQuery<GetContractsReturnT>({
+  const selectedPage = searchParams.get('page') || '1'
+  const perPage = searchParams.get('per_page') || '10'
+  const { data } = useQuery<ContractsQueryT>({
     queryKey: ['get-contracts'],
     queryFn: () =>
       getContracts({
-        count: searchParams.get('count'),
-        page: searchParams.get('page'),
+        _page: selectedPage,
+        _per_page: perPage,
       }),
-    initialData: { contracts: [], total: 0 },
+    initialData: { contracts: [], items: 0 },
   })
 
   const cards = [
     {
       title: 'Total number of contracts',
       description: 'Total numbers of contracts registered',
-      content: data.total,
+      content: data.items,
     },
     {
       title: 'Active contracts',
