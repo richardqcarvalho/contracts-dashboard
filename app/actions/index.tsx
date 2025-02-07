@@ -7,9 +7,7 @@ import {
 
 export const getContracts = async (requestParams?: GetContractsParamsT) => {
   const queryParams = getObjectToQueryParams(requestParams)
-  const response = await fetch(
-    'http://192.168.1.100:3000/contracts' + queryParams,
-  )
+  const response = await fetch('http://localhost:3000/contracts' + queryParams)
 
   if (requestParams) {
     const { data: contracts, ...rest }: GetContractsReturnT =
