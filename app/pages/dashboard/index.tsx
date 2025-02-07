@@ -27,13 +27,13 @@ export const DashboardHome = () => {
       {cards.map(card => (
         <Card
           key={card.path}
-          className='flex flex-1 cursor-pointer flex-col hover:bg-accent'
+          className='relative flex flex-1 cursor-pointer flex-col hover:bg-accent'
           onClick={() => navigate(card.path)}
         >
           <CardContent className='flex flex-1 items-center justify-center'>
             <card.icon size={64} />
           </CardContent>
-          <CardFooter className='flex justify-start'>
+          <CardFooter className='absolute bottom-0 flex justify-start'>
             <p className='text-xl font-bold sm:text-2xl'>{card.title}</p>
           </CardFooter>
         </Card>
